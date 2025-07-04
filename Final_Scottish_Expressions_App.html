@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scottish Expressions Lexicon</title>
+    <style>
+        /* Scottish-inspired color palette */
+        :root {
+            --tartan-blue: #003366;
+            --tartan-green: #006633;
+            --tartan-red: #990000;
+            --cream: #f5f5dc;
+            --heather: #a484ac;
+            --stone: #8c8c8c;
+            --gold: #ffd700;
+            --thistle: #9966cc;
+            --highland-mist: #e6f2ff;
+            --burns-brown: #8b4513;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Garamond', 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, var(--highland-mist) 0%, var(--cream) 50%, #f0f8ff 100%);
+            background-attachment: fixed;
+            color: #333;
+            line-height: 1.7;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Scottish thistle pattern overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 20%, var(--thistle) 1px, transparent 1px),
+                radial-gradient(circle at 80% 80%, var(--heather) 1px, transparent 1px);
+            background-size: 100px 100px, 150px 150px;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-bottom: 60px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px;
+            background: linear-gradient(135deg, var(--tartan-blue) 0%, var(--tartan-green) 50%, var(--tartan-blue) 100%);
+            color: white;
+            border-radius: 20px;
+            box-shadow: 
+                0 15px 35px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+            position: relative;
+            overflow: hidden;
+            border: 3px solid var(--gold);
+        }
+        
+        /* Enhanced tartan pattern */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 10px,
+                    var(--tartan-red) 10px,
+                    var(--tartan-red) 12px,
+                    transparent 12px,
+                    transparent 22px,
+                    var(--tartan-green) 22px,
+                    var(--tartan-green) 24px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 15px,
+                    var(--tartan-red) 15px,
+                    var(--tartan-red) 17px,
+                    transparent 17px,
+                    transparent 32px,
+                    var(--gold) 32px,
+                    var(--gold) 34px
+                );
+            opacity: 0.15;
+        }
+        
+        /* Scottish Saltire Flag */
+        .saltire-flag {
+            width: 60px;
+            height: 40px;
+            background: #005EB8;
+            position: relative;
+            display: inline-block;
+            margin: 0 15px;
+            border: 2px solid var(--gold);
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .saltire-flag::before,
+        .saltire-flag::after {
+            content: '';
+            position: absolute;
+            background: white;
+        }
+        
+        .saltire-flag::before {
+            width: 72px;
+            height: 5px;
+            top: 17.5px;
+            left: -6px;
+            transform: rotate(31deg);
+            transform-origin: center;
+        }
+        
+        .saltire-flag::after {
+            width: 72px;
+            height: 5px;
+            top: 17.5px;
+            left: -6px;
+            transform: rotate(-31deg);
+            transform-origin: center;
+        }
+        
+        .header-flags {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .flag-label {
+            color: var(--gold);
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 10px;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 
+                3px 3px 6px rgba(0,0,0,0.5),
+                0 0 20px rgba(255,215,0,0.3);
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        /* Highland clan motto styling */
+        .subtitle {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        
+        .motto {
+            font-size: 1rem;
+            opacity: 0.8;
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+            color: var(--gold);
+            text-transform: lowercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .search-box {
+            padding: 15px 25px;
+            border: 3px solid var(--tartan-blue);
+            border-radius: 30px;
+            font-size: 1.1rem;
+            width: 350px;
+            max-width: 100%;
+            outline: none;
+            transition: all 0.4s ease;
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            font-family: 'Garamond', 'Georgia', serif;
+        }
+        
+        .search-box:focus {
+            border-color: var(--tartan-green);
+            box-shadow: 
+                0 0 20px rgba(0,102,51,0.4),
+                0 8px 25px rgba(0,0,0,0.2);
+            transform: translateY(-2px);
+        }
+        
+        .view-toggle {
+            display: flex;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            border: 2px solid var(--stone);
+        }
+        
+        .view-btn {
+            padding: 15px 25px;
+            border: none;
+            background: white;
+            color: var(--tartan-blue);
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.4s ease;
+            font-family: 'Garamond', 'Georgia', serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .view-btn.active {
+            background: linear-gradient(135deg, var(--tartan-blue), var(--tartan-green));
+            color: white;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .lexicon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .lexicon-list {
+            display: none;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+            overflow: hidden;
+            border: 2px solid var(--gold);
+        }
+        
+        .expression-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 
+                0 12px 35px rgba(0,0,0,0.15),
+                inset 0 1px 0 rgba(255,255,255,0.8);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        
+        .expression-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--tartan-red), var(--gold), var(--tartan-green));
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .expression-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 20px 50px rgba(0,0,0,0.25),
+                0 0 30px rgba(153,102,204,0.2);
+            border-color: var(--thistle);
+        }
+        
+        .expression-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--gold);
+        }
+        
+        .expression-number {
+            background: linear-gradient(135deg, var(--tartan-red), var(--burns-brown));
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-right: 20px;
+            box-shadow: 
+                0 6px 15px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+            border: 2px solid var(--gold);
+        }
+        
+        .expression-title {
+            font-size: 1.7rem;
+            color: var(--tartan-blue);
+            font-weight: bold;
+            flex-grow: 1;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            font-family: 'Garamond', 'Georgia', serif;
+        }
+        
+        .expression-meaning {
+            color: var(--burns-brown);
+            font-style: italic;
+            margin-bottom: 18px;
+            font-size: 1.15rem;
+            line-height: 1.6;
+        }
+        
+        .expression-history {
+            color: #555;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .translations {
+            display: flex;
+            gap: 18px;
+            margin-top: 20px;
+        }
+        
+        .translation {
+            flex: 1;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .english {
+            background: linear-gradient(135deg, var(--highland-mist), #d4f6da);
+            border-left: 5px solid var(--tartan-green);
+            border-top: 2px solid rgba(0,102,51,0.3);
+        }
+        
+        .french {
+            background: linear-gradient(135deg, #fff0f0, #fce4ec);
+            border-left: 5px solid var(--tartan-red);
+            border-top: 2px solid rgba(153,0,0,0.3);
+        }
+        
+        .translation-label {
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            opacity: 0.8;
+            letter-spacing: 0.5px;
+        }
+        
+        .list-item {
+            display: flex;
+            align-items: center;
+            padding: 20px 25px;
+            border-bottom: 2px solid var(--cream);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .list-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--tartan-red), var(--tartan-green));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .list-item:hover {
+            background: linear-gradient(135deg, var(--highland-mist), rgba(255,255,255,0.8));
+            transform: translateX(5px);
+        }
+        
+        .list-item:hover::before {
+            opacity: 1;
+        }
+        
+        .list-item:last-child {
+            border-bottom: none;
+        }
+        
+        .list-number {
+            background: linear-gradient(135deg, var(--tartan-blue), var(--tartan-green));
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border: 2px solid var(--gold);
+        }
+        
+        .list-content {
+            flex-grow: 1;
+        }
+        
+        .list-title {
+            font-size: 1.3rem;
+            color: var(--tartan-blue);
+            font-weight: bold;
+            margin-bottom: 6px;
+            font-family: 'Garamond', 'Georgia', serif;
+        }
+        
+        .list-meaning {
+            color: var(--burns-brown);
+            font-style: italic;
+            font-size: 1rem;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 40px;
+            margin-bottom: 0;
+            padding: 30px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border: 3px solid var(--gold);
+            position: relative;
+        }
+        
+        .stats::before {
+            content: '⚜️';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 0 15px;
+            font-size: 1.5rem;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--tartan-blue);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            font-family: 'Garamond', 'Georgia', serif;
+        }
+        
+        .stat-label {
+            color: var(--burns-brown);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .expression-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                transform: scale(0.9) translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .modal-header {
+            background: linear-gradient(135deg, var(--tartan-blue), var(--tartan-green));
+            color: white;
+            padding: 30px;
+            border-radius: 20px 20px 0 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .modal-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="tartan-modal" patternUnits="userSpaceOnUse" width="20" height="20"><rect width="20" height="20" fill="%23003366"/><rect x="0" y="0" width="10" height="10" fill="%23006633" opacity="0.3"/><rect x="10" y="10" width="10" height="10" fill="%23990000" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23tartan-modal)"/></svg>') opacity(0.1);
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+        
+        .modal-expression-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .modal-expression-number {
+            background: var(--tartan-red);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-right: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        
+        .modal-expression-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .modal-expression-meaning {
+            font-size: 1.3rem;
+            font-style: italic;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .modal-body {
+            padding: 30px;
+        }
+        
+        .modal-section {
+            margin-bottom: 25px;
+        }
+        
+        .modal-section-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--tartan-blue);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .modal-section-title::before {
+            content: "✦";
+            margin-right: 10px;
+            color: var(--tartan-green);
+            font-size: 1.2rem;
+        }
+        
+        .modal-section-content {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+        }
+        
+        .modal-translations {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .modal-translation {
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        
+        .modal-translation.english {
+            background: linear-gradient(135deg, #e8f4f8, #d4edda);
+            border-left: 5px solid var(--tartan-green);
+        }
+        
+        .modal-translation.french {
+            background: linear-gradient(135deg, #f8e8e8, #fce4ec);
+            border-left: 5px solid var(--tartan-red);
+        }
+        
+        .modal-translation-label {
+            font-weight: bold;
+            font-size: 1rem;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            opacity: 0.8;
+        }
+        
+        .modal-translation-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        .clickable {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .clickable:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .lexicon-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .search-box {
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            .translations {
+                flex-direction: column;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .modal-header {
+                padding: 25px;
+            }
+            
+            .modal-body {
+                padding: 25px;
+            }
+            
+            .modal-expression-title {
+                font-size: 2rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .stats {
+                gap: 30px;
+            }
+            
+            .search-box {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Scottish Expressions Lexicon</h1>
+            <p class="subtitle">Discover the rich tapestry of Scottish language and culture</p>
+            <div class="header-flags">
+                <div class="saltire-flag"></div>
+                <span class="flag-label">🌿 Scotland Forever 🌿</span>
+                <div class="saltire-flag"></div>
+            </div>
+            <p class="motto">"Whit's fur ye'll no go by ye" - What's meant for you won't pass you by</p>
+        </header>
+        
+        <div class="controls">
+            <input type="text" class="search-box" placeholder="Search expressions..." id="searchInput">
+            <div class="view-toggle">
+                <button class="view-btn active" id="gridView">Grid View</button>
+                <button class="view-btn" id="listView">List View</button>
+            </div>
+        </div>
+        
+        <div class="lexicon-grid" id="lexiconGrid">
+            <!-- Cards will be populated by JavaScript -->
+        </div>
+        
+        <div class="lexicon-list" id="lexiconList">
+            <!-- List items will be populated by JavaScript -->
+        </div>
+        
+        <!-- Modal for full expression view -->
+        <div class="expression-modal" id="expressionModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close-btn" id="closeModal">&times;</button>
+                    <div class="modal-expression-header">
+                        <div class="modal-expression-number" id="modalNumber">1</div>
+                        <div class="modal-expression-title" id="modalTitle">Expression</div>
+                    </div>
+                    <div class="modal-expression-meaning" id="modalMeaning">Meaning</div>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-section">
+                        <div class="modal-section-title">History & Etymology</div>
+                        <div class="modal-section-content" id="modalHistory">History content</div>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <div class="modal-section-title">Translations</div>
+                        <div class="modal-translations">
+                            <div class="modal-translation english">
+                                <div class="modal-translation-label">English</div>
+                                <div class="modal-translation-text" id="modalEnglish">English translation</div>
+                            </div>
+                            <div class="modal-translation french">
+                                <div class="modal-translation-label">Français</div>
+                                <div class="modal-translation-text" id="modalFrench">French translation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number" id="totalExpressions">50</div>
+                <div class="stat-label">Total Expressions</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="displayedExpressions">50</div>
+                <div class="stat-label">Displayed</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Years of History</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Scottish expressions data
+        const expressions = [
+            {
+                id: 1,
+                expression: "Awa' an bile yer heid",
+                meaning: "A dismissive phrase suggesting someone should go away and leave you alone.",
+                history: "This colorful expression emerged from Scottish working-class communities in the early 20th century. The humor comes from the absurdity of the suggestion - boiling one's head would be impossible and pointless.",
+                english: "Go away and stop bothering me",
+                french: "Va-t'en et arrête de m'embêter"
+            },
+            {
+                id: 2,
+                expression: "Haud yer wheesht",
+                meaning: "An instruction to be quiet or stop talking.",
+                history: "Dating back to the 16th century, this phrase combines 'haud' (hold) with 'wheesht' (silence). It was commonly used by parents to children but is now used in various social situations.",
+                english: "Be quiet/shut up",
+                french: "Tais-toi/ferme-la"
+            },
+            {
+                id: 3,
+                expression: "Blethering skite",
+                meaning: "Someone who talks nonsense or too much.",
+                history: "This expression combines 'blether' (to talk nonsensically) with 'skite' (a contemptible person). It became popular in the 18th century among the Scottish working class as a way to describe people who talked too much without substance.",
+                english: "Nonsense talker/chatterbox",
+                french: "Bavard/jaseur qui raconte n'importe quoi"
+            },
+            {
+                id: 4,
+                expression: "Dreich",
+                meaning: "Dreary, bleak weather - especially a cold, misty, rainy day.",
+                history: "One of Scotland's most distinctive words, 'dreich' comes from Old Norse and Old English origins and has been used in Scots since at least the 15th century. It perfectly encapsulates the frequently gloomy Scottish weather.",
+                english: "Dreary/miserable (weather)",
+                french: "Maussade/triste (temps)"
+            },
+            {
+                id: 5,
+                expression: "Peelie-wally",
+                meaning: "Looking pale, sickly, or under the weather.",
+                history: "This expression became popular in the late 19th century, particularly in central Scotland. While its exact etymology is uncertain, it's thought to be an onomatopoeic term that mimics the way someone might look when ill.",
+                english: "Pale and sickly",
+                french: "Pâle et maladif"
+            },
+            {
+                id: 6,
+                expression: "Och aye the noo",
+                meaning: "A stereotypical Scottish phrase that's actually rarely used by Scots in everyday conversation.",
+                history: "This phrase is a caricature of Scottish speech that combines 'och aye' (oh yes) with 'the noo' (right now). It became a stereotypical representation of Scottish speech in TV and movies but is more common in parodies than in actual Scottish usage.",
+                english: "Oh yes, right now",
+                french: "Ah oui, maintenant"
+            },
+            {
+                id: 7,
+                expression: "Scunner",
+                meaning: "A strong feeling of dislike or disgust towards something or someone.",
+                history: "Dating back to the 15th century, 'scunner' has deep roots in the Scottish vocabulary. It evolved from Middle English and possibly Norse origins and remains a powerful way to express intense annoyance or disgust.",
+                english: "To disgust/annoy greatly",
+                french: "Dégoûter/ennuyer profondément"
+            },
+            {
+                id: 8,
+                expression: "Bahookie",
+                meaning: "A playful term for someone's bottom or rear end.",
+                history: "A uniquely Scottish slang term that gained popularity in the 20th century. Its origins are uncertain, but it's believed to come from Scots and Gaelic influences. It's considered a humorous, somewhat childish term used in informal settings.",
+                english: "Bottom/backside",
+                french: "Derrière/fesses"
+            },
+            {
+                id: 9,
+                expression: "Braw",
+                meaning: "Good, fine, or pleasant - often used to describe something excellent.",
+                history: "With roots in the Old Scots language from the 16th century, 'braw' is derived from the French 'brave'. It evolved in Scottish usage to describe something good or fine rather than courageous, showing how language adapts across cultures.",
+                english: "Excellent/fine/good",
+                french: "Excellent/bon/agréable"
+            },
+            {
+                id: 10,
+                expression: "Glaikit",
+                meaning: "Stupid, foolish, or not paying attention.",
+                history: "This term has been in use since the early 19th century in Scotland. It likely has roots in the Scots word 'glaik', meaning to trick or deceive, and evolved to describe someone who appears easily fooled due to their lack of awareness.",
+                english: "Stupid/foolish/vacant",
+                french: "Stupide/idiot/distrait"
+            },
+            {
+                id: 11,
+                expression: "Wee beastie",
+                meaning: "A small animal or insect, often referred to with affection or amusement.",
+                history: "Made famous in Robert Burns' poem 'To a Mouse' (1785) with the line 'Wee, sleekit, cowrin, tim'rous beastie', this phrase combines the distinctly Scottish 'wee' (small) with 'beastie' (little beast). It's now a common affectionate term for small creatures.",
+                english: "Small creature",
+                french: "Petite créature"
+            },
+            {
+                id: 12,
+                expression: "Crabbit",
+                meaning: "Bad-tempered, grumpy, or irritable.",
+                history: "This term evolved from the Scots word 'crab', similar to the English meaning of being 'crabby' or ill-tempered. It's been in use since the 18th century and remains a common way to describe someone in a bad mood throughout Scotland.",
+                english: "Grumpy/bad-tempered",
+                french: "Grincheux/de mauvaise humeur"
+            },
+            {
+                id: 13,
+                expression: "Wheesht",
+                meaning: "An instruction to be quiet or silent.",
+                history: "Originating from Middle English 'whist' meaning silence, this expression has been used in Scotland since at least the 16th century. It can be used as a noun, verb, or interjection and remains a common way to request silence across Scotland.",
+                english: "Be quiet!/silence!",
+                french: "Tais-toi!/silence!"
+            },
+            {
+                id: 14,
+                expression: "Bairn",
+                meaning: "A child or baby.",
+                history: "With Norse origins from the Old Norse 'barn', this term has been used in Scotland since the 12th century. It remains common in everyday use across Scotland and northern England, showing the strong influence of Norse languages on Scots.",
+                english: "Child/baby",
+                french: "Enfant/bébé"
+            },
+            {
+                id: 15,
+                expression: "Numpty",
+                meaning: "A foolish or stupid person.",
+                history: "A relatively modern Scottish expression that became popular in the late 20th century. While its exact origin is debated, it's thought to be derived from 'numbskull' and has become a widely used, somewhat affectionate term for someone who's acting foolishly.",
+                english: "Fool/idiot",
+                french: "Imbécile/idiot"
+            },
+            {
+                id: 16,
+                expression: "Blether",
+                meaning: "To talk in a long-winded way with little substance.",
+                history: "With origins dating back to the 16th century, 'blether' comes from the Scots and Northern English dialects. It's related to the Old Norse 'blaðra' meaning to talk nonsense and remains widely used across Scotland today.",
+                english: "Chattering/rambling talk",
+                french: "Bavardage/discours décousu"
+            },
+            {
+                id: 17,
+                expression: "Sleekit",
+                meaning: "Sly, cunning, or untrustworthy.",
+                history: "Made famous in Robert Burns' poem 'To a Mouse' (1785) with the line 'Wee, sleekit, cowrin, tim'rous beastie', the word originally meant smooth or glossy. Over time, it evolved to describe someone with a smooth, deceptive manner.",
+                english: "Sly/cunning/devious",
+                french: "Rusé/sournois/fourbe"
+            },
+            {
+                id: 18,
+                expression: "Tattie-bogle",
+                meaning: "A scarecrow.",
+                history: "This uniquely Scottish term combines 'tattie' (potato) with 'bogle' (ghost or spirit). It emerged from agricultural communities in the 18th century where scarecrows were used to protect potato crops from birds, creating a 'potato ghost' to frighten away pests.",
+                english: "Scarecrow",
+                french: "Épouvantail"
+            },
+            {
+                id: 19,
+                expression: "Haver",
+                meaning: "To talk nonsense or babble.",
+                history: "This expression dates back to the 16th century in Scotland. It's derived from 'haiver', which shares roots with words meaning 'oats' - possibly linking nonsensical talk to the light and insubstantial nature of oats or chaff blown in the wind.",
+                english: "To talk rubbish",
+                french: "Dire des bêtises"
+            },
+            {
+                id: 20,
+                expression: "Bonnie",
+                meaning: "Beautiful, attractive, or handsome.",
+                history: "This iconic Scottish word dates back to the 16th century and comes from the French 'bon' meaning good. It's been immortalized in countless Scottish songs, poems, and the famous folk song 'My Bonnie Lies Over the Ocean'.",
+                english: "Beautiful/attractive",
+                french: "Beau/belle/attrayant"
+            },
+            {
+                id: 21,
+                expression: "Ken",
+                meaning: "To know or understand.",
+                history: "With Germanic and Norse origins, 'ken' has been used in Scotland since the 12th century. It comes from the Old English 'cennan' and Old Norse 'kenna', both meaning 'to know'. It remains in common usage across Scotland, particularly in the expression 'Ye ken?' (You know?).",
+                english: "Know/understand",
+                french: "Savoir/comprendre"
+            },
+            {
+                id: 22,
+                expression: "Peely-wally",
+                meaning: "Looking pale, sickly, or under the weather.",
+                history: "This colorful Scottish expression became popular in the late 19th century, particularly in central Scotland. It's thought to be an onomatopoeic term describing someone's pallid appearance when unwell.",
+                english: "Pale/sickly-looking",
+                french: "Pâle/maladif"
+            },
+            {
+                id: 23,
+                expression: "Teuchter",
+                meaning: "A somewhat pejorative term for someone from the rural Highlands or Islands.",
+                history: "This term emerged in the early 20th century as Lowland Scots' slang for Gaelic-speaking Highlanders. While historically considered derogatory, some Highlanders have reclaimed it.",
+                english: "Highlander/rural person",
+                french: "Montagnard écossais/personne rurale"
+            },
+            {
+                id: 24,
+                expression: "Wabbit",
+                meaning: "Exhausted, tired, or worn out.",
+                history: "This expression became popular in the 19th century, particularly in central and western Scotland. It may be related to the English word 'wap', meaning to flutter or beat, suggesting someone beaten down by exhaustion.",
+                english: "Exhausted/tired",
+                french: "Épuisé/fatigué"
+            },
+            {
+                id: 25,
+                expression: "Coo",
+                meaning: "A cow.",
+                history: "This is a simple dialectical variant of the English word 'cow' that has been used in Scots language for centuries. The change from 'cow' to 'coo' demonstrates the distinctive vowel sounds that characterize the Scots language and accent.",
+                english: "Cow",
+                french: "Vache"
+            },
+            {
+                id: 26,
+                expression: "Fankle",
+                meaning: "A tangled mess or a complicated situation.",
+                history: "This expressive word has been used in Scots since the 17th century. It's thought to be related to the Norse word 'fang' meaning to catch or capture, evolving to describe things that have become caught or tangled together.",
+                english: "Tangle/mess",
+                french: "Enchevêtrement/désordre"
+            },
+            {
+                id: 27,
+                expression: "Stoater",
+                meaning: "Something or someone exceptional or remarkable.",
+                history: "This modern Scottish slang term became popular in the late 20th century, particularly in Glasgow. It evolved from the verb 'to stoat' meaning to bounce or walk proudly, suggesting something that stands out in a positive way.",
+                english: "Excellent thing/person",
+                french: "Chose/personne excellente"
+            },
+            {
+                id: 28,
+                expression: "Scunnered",
+                meaning: "To be fed up, disgusted, or sick of something.",
+                history: "This powerful expression of dissatisfaction has deep roots in Scottish language, dating back to the 15th century. It comes from the noun 'scunner' (a strong dislike) and has remained a staple of Scottish expression for generations.",
+                english: "Fed up/disgusted",
+                french: "Dégoûté/en avoir marre"
+            },
+            {
+                id: 29,
+                expression: "Besom",
+                meaning: "A rude or cheeky woman (often used affectionately).",
+                history: "Originally meaning a broom or a woman of questionable character in the 16th century, 'besom' evolved in Scots to become a more affectionate, playful term for a mischievous or spirited woman.",
+                english: "Cheeky woman",
+                french: "Femme effrontée"
+            },
+            {
+                id: 30,
+                expression: "Bourach",
+                meaning: "A mess, muddle, or a disorganized gathering of people.",
+                history: "This expression comes from Gaelic 'bùrach' meaning a mess or a jumble. It entered Scots language through Highland influence and has been used since the 18th century.",
+                english: "Mess/muddle",
+                french: "Désordre/confusion"
+            },
+            {
+                id: 31,
+                expression: "Outwith",
+                meaning: "Outside of or beyond a particular area or sphere.",
+                history: "This uniquely Scottish preposition has been in use since the 14th century. While it sounds like a modern invention to non-Scots, it has deep historical roots in Scots language and law.",
+                english: "Outside of/beyond",
+                french: "En dehors de/au-delà de"
+            },
+            {
+                id: 32,
+                expression: "Courie in",
+                meaning: "To snuggle up or get cozy.",
+                history: "This warm, comforting expression comes from the Scots verb 'to courie' meaning to nestle or huddle. It has been used since the 17th century and perfectly captures the Scottish instinct to create cozy spaces during cold winters.",
+                english: "Snuggle up/get cozy",
+                french: "Se blottir/se mettre à l'aise"
+            },
+            {
+                id: 33,
+                expression: "Chancer",
+                meaning: "Someone who takes risks or tries to gain advantage through questionable means.",
+                history: "This term became popular in Scottish urban areas during the early 20th century. It describes someone who 'chances their arm' - taking opportunistic risks that may be slightly dishonest.",
+                english: "Opportunist/risk-taker",
+                french: "Opportuniste/risque-tout"
+            },
+            {
+                id: 34,
+                expression: "Shoogle",
+                meaning: "To shake, rock, or move back and forth.",
+                history: "This expressive word has been used in Scots since the 17th century. Its onomatopoeic quality perfectly captures the sound of something rattling or shaking. It remains in common use across Scotland.",
+                english: "Shake/rock",
+                french: "Secouer/balancer"
+            },
+            {
+                id: 35,
+                expression: "Bampot",
+                meaning: "A foolish, crazy, or eccentric person.",
+                history: "This colorful insult emerged in Glasgow in the early 20th century. The origins are uncertain, but it may combine 'bam' (a foolish person) with 'pot' (head). It's now used across Scotland as a playful way to describe someone acting foolishly.",
+                english: "Idiot/crazy person",
+                french: "Idiot/personne folle"
+            },
+            {
+                id: 36,
+                expression: "Geggie",
+                meaning: "Mouth (often used when telling someone to be quiet).",
+                history: "This slang term for mouth became popular in the 20th century, particularly in Edinburgh and the east of Scotland. Its exact origins are uncertain, but it's likely an evolution of older Scots words for chattering or gossiping.",
+                english: "Mouth",
+                french: "Bouche"
+            },
+            {
+                id: 37,
+                expression: "Mingin'",
+                meaning: "Disgusting, smelly, or of poor quality.",
+                history: "This expressive term became widely used across Scotland in the late 20th century. It likely comes from the Scots word 'ming' meaning excrement. While historically vulgar, it has softened over time.",
+                english: "Disgusting/gross",
+                french: "Dégoûtant/répugnant"
+            },
+            {
+                id: 38,
+                expression: "Mind",
+                meaning: "To remember or to remind.",
+                history: "This usage of 'mind' has been common in Scots since the 16th century. While the word exists in standard English, its use meaning 'to remember' is distinctly Scottish. 'D'ye mind?' (Do you remember?) remains a common phrase.",
+                english: "Remember/remind",
+                french: "Se souvenir/rappeler"
+            },
+            {
+                id: 39,
+                expression: "How's yer dinger?",
+                meaning: "How are you? How are things going?",
+                history: "This playful greeting emerged in the 20th century, particularly in Glasgow. 'Dinger' likely comes from the phrase 'top-dinger' meaning first-rate or excellent. It's a casual, friendly way to ask someone how they're doing.",
+                english: "How are you?",
+                french: "Comment ça va ?"
+            },
+            {
+                id: 40,
+                expression: "Piece",
+                meaning: "A sandwich or packed lunch.",
+                history: "This uniquely Scottish term has been used since the early 20th century, particularly in working-class communities. From asking for a 'piece and jam' (jam sandwich) to the infamous 'jeely piece' (jam sandwich thrown from high-rise flats), it's embedded in Scottish cultural history.",
+                english: "Sandwich",
+                french: "Sandwich"
+            },
+            {
+                id: 41,
+                expression: "Ya dancer!",
+                meaning: "An expression of joy or celebration.",
+                history: "This exuberant phrase became popular in Glasgow in the late 20th century. Originally associated with football celebrations, it's now used more widely to express happiness or excitement at good news or success.",
+                english: "Great!/fantastic!",
+                french: "Super !/fantastique !"
+            },
+            {
+                id: 42,
+                expression: "Aye right",
+                meaning: "Expression of disbelief or skepticism (usually means the opposite of 'yes, correct').",
+                history: "This ironic phrase combines 'aye' (yes) with 'right' but actually communicates skepticism. It developed in the 19th century and demonstrates the dry, sarcastic humor that characterizes much of Scottish conversation.",
+                english: "Yeah, sure (sarcastically)",
+                french: "Mais bien sûr (sarcastiquement)"
+            },
+            {
+                id: 43,
+                expression: "Footer",
+                meaning: "To mess around or fiddle with something.",
+                history: "This expressive verb has been used in Scots since the 18th century. It likely evolved from the idea of 'footing about' or moving one's feet aimlessly. It perfectly captures the concept of unproductive tinkering or time-wasting activity.",
+                english: "To fiddle/mess around",
+                french: "Bricoler/tripoter"
+            },
+            {
+                id: 44,
+                expression: "Keek",
+                meaning: "To peep, look quickly or secretly.",
+                history: "With roots in Middle English and Old Norse, 'keek' has been used in Scotland since the 14th century. It comes from words meaning to 'peep' or 'look' and has maintained its meaning for centuries.",
+                english: "Peek/glance",
+                french: "Jeter un coup d'œil/regarder furtivement"
+            },
+            {
+                id: 45,
+                expression: "Whit's fur ye'll no go by ye",
+                meaning: "What's meant to happen to you will happen - you can't escape your fate.",
+                history: "This fatalistic proverb has been part of Scottish wisdom for centuries. It reflects the Calvinist influence on Scottish culture with its emphasis on predestination and the idea that one's fate is predetermined.",
+                english: "What's meant for you won't pass you by",
+                french: "Ce qui t'est destiné ne te manquera pas"
+            },
+            {
+                id: 46,
+                expression: "It's a sair fecht",
+                meaning: "It's a hard struggle or difficult situation.",
+                history: "This expression combines 'sair' (sore) with 'fecht' (fight) and has been used by Scots for centuries to describe life's hardships. It reflects the stoic resilience in Scottish culture - acknowledging difficulties while implying one must persevere.",
+                english: "It's a hard struggle",
+                french: "C'est une dure bataille"
+            },
+            {
+                id: 47,
+                expression: "Gantin'",
+                meaning: "Desperately wanting or craving something.",
+                history: "This word evolved from the Old Norse 'gana' meaning to gape or yawn. By the 19th century in Scotland, it had come to describe intense yearning or craving. It's particularly associated with hunger but can apply to any strong desire.",
+                english: "Yearning/desperate for",
+                french: "Désirer ardemment/avoir très envie de"
+            },
+            {
+                id: 48,
+                expression: "Lang may yer lum reek",
+                meaning: "Long may your chimney smoke - a wish for someone's prosperity and long life.",
+                history: "This traditional Scottish blessing dates back to the 18th century when a smoking chimney meant you had fuel for heat and cooking - signs of prosperity. It's still used today, particularly at Hogmanay celebrations.",
+                english: "May you live long and prosper",
+                french: "Puisses-tu vivre longtemps et prospérer"
+            },
+            {
+                id: 49,
+                expression: "Drookit",
+                meaning: "Completely soaked or drenched.",
+                history: "This vivid Scottish word has been used since the 16th century to describe being thoroughly wet. It likely comes from the Old Norse 'drukna' meaning to drown. The word perfectly captures the feeling of being caught in a Scottish downpour.",
+                english: "Soaked/drenched",
+                french: "Trempé/détrempé"
+            },
+            {
+                id: 50,
+                expression: "Hirplin'",
+                meaning: "Walking with a limp or hobbling.",
+                history: "This descriptive word has been part of Scots vocabulary since the 15th century. It comes from Middle English and describes the uneven gait of someone walking with difficulty. It's often used both literally and metaphorically for anything that's not working smoothly.",
+                english: "Limping/hobbling",
+                french: "Boitiller/clocher"
+            }
+        ];
+        
+        // DOM elements
+        const searchInput = document.getElementById('searchInput');
+        const gridView = document.getElementById('gridView');
+        const listView = document.getElementById('listView');
+        const lexiconGrid = document.getElementById('lexiconGrid');
+        const lexiconList = document.getElementById('lexiconList');
+        const displayedCount = document.getElementById('displayedExpressions');
+        const expressionModal = document.getElementById('expressionModal');
+        const closeModal = document.getElementById('closeModal');
+        
+        // Modal elements
+        const modalNumber = document.getElementById('modalNumber');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalMeaning = document.getElementById('modalMeaning');
+        const modalHistory = document.getElementById('modalHistory');
+        const modalEnglish = document.getElementById('modalEnglish');
+        const modalFrench = document.getElementById('modalFrench');
+        
+        let currentView = 'grid';
+        let filteredExpressions = [...expressions];
+        
+        // Initialize the lexicon
+        function init() {
+            renderExpressions();
+            setupEventListeners();
+        }
+        
+        // Setup event listeners
+        function setupEventListeners() {
+            searchInput.addEventListener('input', handleSearch);
+            gridView.addEventListener('click', () => switchView('grid'));
+            listView.addEventListener('click', () => switchView('list'));
+            closeModal.addEventListener('click', closeExpressionModal);
+            
+            // Close modal when clicking outside
+            expressionModal.addEventListener('click', (e) => {
+                if (e.target === expressionModal) {
+                    closeExpressionModal();
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && expressionModal.style.display === 'flex') {
+                    closeExpressionModal();
+                }
+            });
+        }
+        
+        // Open expression modal
+        function openExpressionModal(expression) {
+            modalNumber.textContent = expression.id;
+            modalTitle.textContent = expression.expression;
+            modalMeaning.textContent = expression.meaning;
+            modalHistory.textContent = expression.history;
+            modalEnglish.textContent = expression.english;
+            modalFrench.textContent = expression.french;
+            
+            expressionModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Close expression modal
+        function closeExpressionModal() {
+            expressionModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Handle search functionality
+        function handleSearch(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            filteredExpressions = expressions.filter(expr => 
+                expr.expression.toLowerCase().includes(searchTerm) ||
+                expr.meaning.toLowerCase().includes(searchTerm) ||
+                expr.english.toLowerCase().includes(searchTerm) ||
+                expr.french.toLowerCase().includes(searchTerm)
+            );
+            renderExpressions();
+            updateDisplayedCount();
+        }
+        
+        // Switch between grid and list views
+        function switchView(view) {
+            currentView = view;
+            
+            if (view === 'grid') {
+                gridView.classList.add('active');
+                listView.classList.remove('active');
+                lexiconGrid.style.display = 'grid';
+                lexiconList.style.display = 'none';
+            } else {
+                listView.classList.add('active');
+                gridView.classList.remove('active');
+                lexiconGrid.style.display = 'none';
+                lexiconList.style.display = 'block';
+            }
+            
+            renderExpressions();
+        }
+        
+        // Render expressions based on current view
+        function renderExpressions() {
+            if (currentView === 'grid') {
+                renderGridView();
+            } else {
+                renderListView();
+            }
+        }
+        
+        // Render grid view
+        function renderGridView() {
+            if (filteredExpressions.length === 0) {
+                lexiconGrid.innerHTML = '<div class="no-results">No expressions found matching your search.</div>';
+                return;
+            }
+            
+            lexiconGrid.innerHTML = filteredExpressions.map(expr => `
+                <div class="expression-card clickable" onclick="openExpressionModal(expressions.find(e => e.id === ${expr.id}))">
+                    <div class="expression-header">
+                        <div class="expression-number">${expr.id}</div>
+                        <div class="expression-title">${expr.expression}</div>
+                    </div>
+                    <div class="expression-meaning">${expr.meaning}</div>
+                    <div class="expression-history">${expr.history.length > 150 ? expr.history.substring(0, 150) + '...' : expr.history}</div>
+                    <div class="translations">
+                        <div class="translation english">
+                            <div class="translation-label">English</div>
+                            <div>${expr.english}</div>
+                        </div>
+                        <div class="translation french">
+                            <div class="translation-label">Français</div>
+                            <div>${expr.french}</div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // Render list view
+        function renderListView() {
+            if (filteredExpressions.length === 0) {
+                lexiconList.innerHTML = '<div class="no-results">No expressions found matching your search.</div>';
+                return;
+            }
+            
+            lexiconList.innerHTML = filteredExpressions.map(expr => `
+                <div class="list-item clickable" onclick="openExpressionModal(expressions.find(e => e.id === ${expr.id}))">
+                    <div class="list-number">${expr.id}</div>
+                    <div class="list-content">
+                        <div class="list-title">${expr.expression}</div>
+                        <div class="list-meaning">${expr.meaning}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // Update displayed count
+        function updateDisplayedCount() {
+            displayedCount.textContent = filteredExpressions.length;
+        }
+        
+        // Initialize the application
+        init();
+    </script>
+</body>
+</html>

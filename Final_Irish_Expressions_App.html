@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Irish Expressions Lexicon</title>
+    <style>
+        /* Irish-inspired color palette */
+        :root {
+            --emerald-green: #009639;
+            --celtic-gold: #FFB000;
+            --irish-orange: #FF7900;
+            --cream: #f5f5dc;
+            --shamrock: #228B22;
+            --stone: #8c8c8c;
+            --clover: #90EE90;
+            --bog-brown: #8B4513;
+            --irish-mist: #e6ffe6;
+            --dublin-blue: #003d7a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Garamond', 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, var(--irish-mist) 0%, var(--cream) 50%, #f0fff0 100%);
+            background-attachment: fixed;
+            color: #333;
+            line-height: 1.7;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Irish shamrock pattern overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 20%, var(--shamrock) 1px, transparent 1px),
+                radial-gradient(circle at 80% 80%, var(--clover) 1px, transparent 1px);
+            background-size: 120px 120px, 180px 180px;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-bottom: 60px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px;
+            background: linear-gradient(135deg, var(--emerald-green) 0%, var(--shamrock) 50%, var(--emerald-green) 100%);
+            color: white;
+            border-radius: 20px;
+            box-shadow: 
+                0 15px 35px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.1);
+            position: relative;
+            overflow: hidden;
+            border: 3px solid var(--celtic-gold);
+        }
+        
+        /* Enhanced Irish pattern */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 12px,
+                    var(--irish-orange) 12px,
+                    var(--irish-orange) 14px,
+                    transparent 14px,
+                    transparent 26px,
+                    var(--celtic-gold) 26px,
+                    var(--celtic-gold) 28px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 18px,
+                    var(--irish-orange) 18px,
+                    var(--irish-orange) 20px,
+                    transparent 20px,
+                    transparent 36px,
+                    var(--celtic-gold) 36px,
+                    var(--celtic-gold) 38px
+                );
+            opacity: 0.15;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 
+                3px 3px 6px rgba(0,0,0,0.5),
+                0 0 20px rgba(255,176,0,0.3);
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        
+        /* Irish motto styling */
+        .subtitle {
+            font-size: 1.4rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        
+        .motto {
+            font-size: 1rem;
+            opacity: 0.8;
+            position: relative;
+            z-index: 1;
+            font-style: italic;
+            color: var(--celtic-gold);
+            text-transform: lowercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Irish Tricolour Flag */
+        .tricolour-flag {
+            width: 60px;
+            height: 40px;
+            position: relative;
+            display: inline-block;
+            margin: 0 15px;
+            border: 2px solid var(--celtic-gold);
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .tricolour-flag::before,
+        .tricolour-flag::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 33.33%;
+        }
+        
+        .tricolour-flag::before {
+            left: 0;
+            background: var(--emerald-green);
+        }
+        
+        .tricolour-flag::after {
+            right: 0;
+            background: var(--irish-orange);
+        }
+        
+        .tricolour-flag {
+            background: white;
+        }
+        
+        .header-flags {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .flag-label {
+            color: var(--celtic-gold);
+            font-size: 0.9rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 0 10px;
+        }
+        
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .search-box {
+            padding: 15px 25px;
+            border: 3px solid var(--emerald-green);
+            border-radius: 30px;
+            font-size: 1.1rem;
+            width: 350px;
+            max-width: 100%;
+            outline: none;
+            transition: all 0.4s ease;
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            font-family: 'Garamond', 'Georgia', serif;
+        }
+        
+        .search-box:focus {
+            border-color: var(--shamrock);
+            box-shadow: 
+                0 0 20px rgba(34,139,34,0.4),
+                0 8px 25px rgba(0,0,0,0.2);
+            transform: translateY(-2px);
+        }
+        
+        .view-toggle {
+            display: flex;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            border: 2px solid var(--stone);
+        }
+        
+        .view-btn {
+            padding: 15px 25px;
+            border: none;
+            background: white;
+            color: var(--emerald-green);
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.4s ease;
+            font-family: 'Garamond', 'Georgia', serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .view-btn.active {
+            background: linear-gradient(135deg, var(--emerald-green), var(--shamrock));
+            color: white;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .lexicon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .lexicon-list {
+            display: none;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+            overflow: hidden;
+            border: 2px solid var(--celtic-gold);
+        }
+        
+        .expression-card {
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 
+                0 12px 35px rgba(0,0,0,0.15),
+                inset 0 1px 0 rgba(255,255,255,0.8);
+            transition: all 0.4s ease;
+            border: 2px solid transparent;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        
+        .expression-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--emerald-green), var(--celtic-gold), var(--irish-orange));
+            border-radius: 20px 20px 0 0;
+        }
+        
+        .expression-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 
+                0 20px 50px rgba(0,0,0,0.25),
+                0 0 30px rgba(34,139,34,0.2);
+            border-color: var(--shamrock);
+        }
+        
+        .expression-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--celtic-gold);
+        }
+        
+        .expression-number {
+            background: linear-gradient(135deg, var(--emerald-green), var(--bog-brown));
+            color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-right: 20px;
+            box-shadow: 
+                0 6px 15px rgba(0,0,0,0.3),
+                inset 0 1px 0 rgba(255,255,255,0.2);
+            border: 2px solid var(--celtic-gold);
+        }
+        
+        .expression-title {
+            font-size: 1.7rem;
+            color: var(--emerald-green);
+            font-weight: bold;
+            flex-grow: 1;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            font-family: 'Garamond', 'Georgia', serif;
+        }
+        
+        .expression-meaning {
+            color: var(--bog-brown);
+            font-style: italic;
+            margin-bottom: 18px;
+            font-size: 1.15rem;
+            line-height: 1.6;
+        }
+        
+        .expression-history {
+            color: #555;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .translations {
+            display: flex;
+            gap: 18px;
+            margin-top: 20px;
+        }
+        
+        .translation {
+            flex: 1;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .english {
+            background: linear-gradient(135deg, var(--irish-mist), #d4f6da);
+            border-left: 5px solid var(--shamrock);
+            border-top: 2px solid rgba(34,139,34,0.3);
+        }
+        
+        .french {
+            background: linear-gradient(135deg, #fff0f0, #fce4ec);
+            border-left: 5px solid var(--irish-orange);
+            border-top: 2px solid rgba(255,121,0,0.3);
+        }
+        
+        .translation-label {
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            opacity: 0.8;
+            letter-spacing: 0.5px;
+        }
+        
+        .list-item {
+            display: flex;
+            align-items: center;
+            padding: 20px 25px;
+            border-bottom: 2px solid var(--cream);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .list-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--emerald-green), var(--shamrock));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .list-item:hover {
+            background: linear-gradient(135deg, var(--irish-mist), rgba(255,255,255,0.8));
+            transform: translateX(5px);
+        }
+        
+        .list-item:hover::before {
+            opacity: 1;
+        }
+        
+        .list-item:last-child {
+            border-bottom: none;
+        }
+        
+        .list-number {
+            background: linear-gradient(135deg, var(--emerald-green), var(--shamrock));
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-right: 20px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            border: 2px solid var(--celtic-gold);
+        }
+        
+        .list-content {
+            flex-grow: 1;
+        }
+        
+        .list-title {
+            font-size: 1.3rem;
+            color: var(--emerald-green);
+            font-weight: bold;
+            margin-bottom: 6px;
+            font-family: 'Garamond', 'Georgia', serif;
+        }
+        
+        .list-meaning {
+            color: var(--bog-brown);
+            font-style: italic;
+            font-size: 1rem;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 40px;
+            margin-bottom: 0;
+            padding: 30px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border: 3px solid var(--celtic-gold);
+            position: relative;
+        }
+        
+        .stats::before {
+            content: '☘️';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 0 15px;
+            font-size: 1.5rem;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--emerald-green);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            font-family: 'Garamond', 'Georgia', serif;
+        }
+        
+        .stat-label {
+            color: var(--bog-brown);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-style: italic;
+        }
+        
+        .expression-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: modalSlideIn 0.3s ease-out;
+        }
+        
+        @keyframes modalSlideIn {
+            from {
+                transform: scale(0.9) translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        /* Enhanced modal styling with Irish elements */
+        .modal-header {
+            background: linear-gradient(135deg, var(--emerald-green) 0%, var(--shamrock) 50%, var(--emerald-green) 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px 20px 0 0;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 4px solid var(--celtic-gold);
+        }
+        
+        .modal-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 20px,
+                    var(--irish-orange) 20px,
+                    var(--irish-orange) 22px
+                ),
+                repeating-linear-gradient(
+                    -45deg,
+                    transparent,
+                    transparent 25px,
+                    var(--celtic-gold) 25px,
+                    var(--celtic-gold) 27px
+                );
+            opacity: 0.1;
+        }
+        
+        .modal-header::after {
+            content: 'Éire go Brách';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 0 20px;
+            font-size: 1rem;
+            color: var(--emerald-green);
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .close-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+        
+        .modal-expression-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .modal-expression-number {
+            background: var(--irish-orange);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-right: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        
+        .modal-expression-title {
+            font-size: 2.8rem;
+            font-weight: bold;
+            text-shadow: 
+                3px 3px 6px rgba(0,0,0,0.3),
+                0 0 20px rgba(255,176,0,0.2);
+            font-family: 'Garamond', 'Georgia', serif;
+            letter-spacing: 1px;
+        }
+        
+        .modal-expression-meaning {
+            font-size: 1.4rem;
+            font-style: italic;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            color: var(--celtic-gold);
+            margin-top: 10px;
+        }
+        
+        .modal-body {
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.95), var(--irish-mist));
+        }
+        
+        .modal-section {
+            margin-bottom: 25px;
+        }
+        
+        .modal-section-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--emerald-green);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .modal-section-title::before {
+            content: "☘️";
+            margin-right: 12px;
+            font-size: 1.3rem;
+        }
+        
+        .modal-section-content {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #555;
+        }
+        
+        .modal-translations {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .modal-translation {
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .modal-translation.english {
+            background: linear-gradient(135deg, var(--irish-mist), #d4f6da);
+            border-left: 5px solid var(--shamrock);
+        }
+        
+        .modal-translation.english::before {
+            content: '🇬🇧';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .modal-translation.french {
+            background: linear-gradient(135deg, #fff0f0, #fce4ec);
+            border-left: 5px solid var(--irish-orange);
+        }
+        
+        .modal-translation.french::before {
+            content: '🇫🇷';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .modal-translation-label {
+            font-weight: bold;
+            font-size: 1rem;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            opacity: 0.8;
+        }
+        
+        .modal-translation-text {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        .clickable {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .clickable:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .lexicon-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .search-box {
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            .translations {
+                flex-direction: column;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .modal-translations {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .modal-header {
+                padding: 25px;
+            }
+            
+            .modal-body {
+                padding: 25px;
+            }
+            
+            .modal-expression-title {
+                font-size: 2rem;
+            }
+            
+            .stats {
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Irish Expressions Lexicon</h1>
+            <p class="subtitle">Explore the rich heritage of Irish language and culture</p>
+            <div class="header-flags">
+                <div class="tricolour-flag"></div>
+                <span class="flag-label">☘️ Ireland Forever ☘️</span>
+                <div class="tricolour-flag"></div>
+            </div>
+            <p class="motto">"Ní neart go cur le chéile" - There is no strength without unity</p>
+        </header>
+        
+        <div class="controls">
+            <input type="text" class="search-box" placeholder="Search expressions..." id="searchInput">
+            <div class="view-toggle">
+                <button class="view-btn active" id="gridView">Grid View</button>
+                <button class="view-btn" id="listView">List View</button>
+            </div>
+        </div>
+        
+        <div class="lexicon-grid" id="lexiconGrid">
+            <!-- Cards will be populated by JavaScript -->
+        </div>
+        
+        <div class="lexicon-list" id="lexiconList">
+            <!-- List items will be populated by JavaScript -->
+        </div>
+        
+        <!-- Modal for full expression view -->
+        <div class="expression-modal" id="expressionModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close-btn" id="closeModal">&times;</button>
+                    <div class="modal-expression-header">
+                        <div class="modal-expression-number" id="modalNumber">1</div>
+                        <div class="modal-expression-title" id="modalTitle">Expression</div>
+                    </div>
+                    <div class="modal-expression-meaning" id="modalMeaning">Meaning</div>
+                </div>
+                <div class="modal-body">
+                    <div class="modal-section">
+                        <div class="modal-section-title">History & Etymology</div>
+                        <div class="modal-section-content" id="modalHistory">History content</div>
+                    </div>
+                    
+                    <div class="modal-section">
+                        <div class="modal-section-title">Translations</div>
+                        <div class="modal-translations">
+                            <div class="modal-translation english">
+                                <div class="modal-translation-label">English</div>
+                                <div class="modal-translation-text" id="modalEnglish">English translation</div>
+                            </div>
+                            <div class="modal-translation french">
+                                <div class="modal-translation-label">Français</div>
+                                <div class="modal-translation-text" id="modalFrench">French translation</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number" id="totalExpressions">50</div>
+                <div class="stat-label">Total Expressions</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="displayedExpressions">50</div>
+                <div class="stat-label">Displayed</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">1000+</div>
+                <div class="stat-label">Years of History</div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Irish expressions data (50 authentic Irish expressions)
+        const expressions = [
+            {
+                id: 1,
+                expression: "Acting the maggot",
+                meaning: "Behaving foolishly or mischievously.",
+                history: "This uniquely Irish expression dates back to the early 20th century. It compares someone's erratic behavior to the unpredictable movements of a maggot. Originally used in rural Ireland, it spread throughout the country as a colorful way to describe someone who's being deliberately silly or troublesome.",
+                english: "Acting foolishly/being mischievous",
+                french: "Faire l'idiot/être espiègle"
+            },
+            {
+                id: 2,
+                expression: "Away with the fairies",
+                meaning: "Someone who is daydreaming, absent-minded, or not paying attention.",
+                history: "Rooted in Irish folklore and Celtic mythology, this expression refers to the belief that fairies could enchant humans and lead them away from reality. Dating back centuries, it reflects Ireland's rich tradition of fairy lore and supernatural beliefs.",
+                english: "Daydreaming/absent-minded",
+                french: "Dans la lune/distrait"
+            },
+            {
+                id: 3,
+                expression: "Cat's melodeon",
+                meaning: "Something that's completely useless or broken beyond repair.",
+                history: "This Cork expression compares a broken item to a melodeon (accordion) that a cat might play - producing nothing but terrible noise. It emerged in the early 20th century when melodeons were popular in Irish traditional music.",
+                english: "Completely useless/broken",
+                french: "Complètement inutile/cassé"
+            },
+            {
+                id: 4,
+                expression: "Culchie",
+                meaning: "A person from rural Ireland, especially from outside Dublin.",
+                history: "Originally derived from 'Kiltimagh' (a town in Mayo), this term was used by Dubliners to describe country folk. While once derogatory, many rural Irish have embraced it with pride. It highlights the urban-rural divide in Irish culture.",
+                english: "Country person/rural Irish",
+                french: "Personne de la campagne"
+            },
+            {
+                id: 5,
+                expression: "Deadly",
+                meaning: "Excellent, brilliant, or really good.",
+                history: "In Irish English, 'deadly' paradoxically means the opposite of its literal meaning. This Dublin slang from the 1980s became widespread throughout Ireland, showing how Irish English creatively repurposes standard English words.",
+                english: "Excellent/brilliant",
+                french: "Excellent/génial"
+            },
+            {
+                id: 6,
+                expression: "Eejit",
+                meaning: "A foolish person; an idiot.",
+                history: "A softened Irish pronunciation of 'idiot', this term is used affectionately rather than maliciously. It's been part of Irish vernacular for over a century and represents the Irish tendency to use gentle mockery as a form of endearment.",
+                english: "Fool/idiot",
+                french: "Idiot/imbécile"
+            },
+            {
+                id: 7,
+                expression: "Fair play to you",
+                meaning: "Well done; expressing approval or congratulations.",
+                history: "This expression embodies the Irish value of recognizing good effort and fair dealing. It's been used since the 19th century and reflects Irish cultural emphasis on acknowledging others' achievements and good character.",
+                english: "Well done/good for you",
+                french: "Bravo/bien joué"
+            },
+            {
+                id: 8,
+                expression: "Gas man/woman",
+                meaning: "Someone who is very funny or entertaining.",
+                history: "Dating from the mid-20th century, this expression compares a funny person to gas - something that can make you laugh until you're 'gasping' for air. It's particularly common in Dublin and reflects Irish appreciation for wit and humor.",
+                english: "Very funny person",
+                french: "Personne très drôle"
+            },
+            {
+                id: 9,
+                expression: "Having a gawk",
+                meaning: "Taking a look at something, often nosily or curiously.",
+                history: "From the Middle English 'gawken' meaning to stare, this expression has been used in Ireland since the 18th century. It often implies looking at something with particular interest or curiosity, sometimes when you shouldn't be.",
+                english: "Taking a look/staring",
+                french: "Jeter un coup d'œil/regarder"
+            },
+            {
+                id: 10,
+                expression: "I will in me hole",
+                meaning: "Absolutely not; no way.",
+                history: "This emphatic refusal is uniquely Irish and considered quite vulgar. It emerged in the 20th century as a forceful way to reject a suggestion or request, using crude imagery to emphasize the speaker's unwillingness.",
+                english: "Absolutely not/no way",
+                french: "Absolument pas/jamais"
+            },
+            {
+                id: 11,
+                expression: "Jacks",
+                meaning: "Toilet or bathroom.",
+                history: "Possibly derived from 'Jacques' (a common name for generic toilets in medieval times) or from 'jakes' (an old English term for privy), this has been Irish slang for toilet since the early 20th century.",
+                english: "Toilet/bathroom",
+                french: "Toilettes/WC"
+            },
+            {
+                id: 12,
+                expression: "Kip",
+                meaning: "A nap or sleep; also a dirty or untidy place.",
+                history: "From the Danish 'kippe' meaning a cheap lodging house, this word came to Ireland through British English. It has a dual meaning - either a sleep or a messy place - and has been used since the early 1900s.",
+                english: "Sleep/nap or messy place",
+                french: "Dormir/sieste ou endroit sale"
+            },
+            {
+                id: 13,
+                expression: "Langers",
+                meaning: "Very drunk.",
+                history: "This Cork slang term for being extremely intoxicated gained popularity in the late 20th century. Its exact etymology is unclear, but it's become synonymous with Cork culture and Irish drinking expressions.",
+                english: "Very drunk",
+                french: "Très ivre/saoul"
+            },
+            {
+                id: 14,
+                expression: "Mot",
+                meaning: "Girlfriend or attractive woman.",
+                history: "From the French 'mot' meaning word, this Dublin slang emerged in the mid-20th century. It's used primarily by young men to refer to their girlfriend or an attractive woman, showing French influence on Irish slang.",
+                english: "Girlfriend/attractive woman",
+                french: "Petite amie/femme attirante"
+            },
+            {
+                id: 15,
+                expression: "Now you're sucking diesel",
+                meaning: "Now you're getting it right; now you're on the right track.",
+                history: "This modern Irish expression compares success to the efficiency of a diesel engine running properly. It emerged in the 1980s during Ireland's modernization period and reflects the country's relationship with technology and progress.",
+                english: "Now you've got it right",
+                french: "Maintenant tu y arrives"
+            },
+            {
+                id: 16,
+                expression: "On the tear",
+                meaning: "Going on a drinking spree or wild night out.",
+                history: "This expression compares a night of heavy drinking to tearing through the town. It's been part of Irish vernacular since the 19th century and reflects the cultural association between socializing and alcohol consumption.",
+                english: "On a drinking spree",
+                french: "En train de faire la fête"
+            },
+            {
+                id: 17,
+                expression: "Puss",
+                meaning: "A sour or grumpy facial expression.",
+                history: "From the Irish word 'pus' meaning lip or mouth, this expression describes someone with a sour expression. It's been used since the 19th century and shows how Irish Gaelic influenced Irish English vocabulary.",
+                english: "Sour/grumpy expression",
+                french: "Expression renfrognée"
+            },
+            {
+                id: 18,
+                expression: "Quare",
+                meaning: "Very, quite, or strange.",
+                history: "A dialect pronunciation of 'queer' (meaning strange), this word is particularly common in Northern Ireland and rural areas. It can mean both 'very' (quare good) or 'strange' depending on context, dating back centuries.",
+                english: "Very/quite or strange",
+                french: "Très/assez ou étrange"
+            },
+            {
+                id: 19,
+                expression: "Rashers",
+                meaning: "Bacon, particularly Irish back bacon.",
+                history: "From the word 'rasher' meaning a thin slice, this term specifically refers to Irish-style bacon. It's been used since the 18th century and distinguishes Irish bacon from other varieties, reflecting local culinary traditions.",
+                english: "Bacon (Irish style)",
+                french: "Bacon (style irlandais)"
+            },
+            {
+                id: 20,
+                expression: "Savage",
+                meaning: "Excellent, great, or extreme.",
+                history: "Like 'deadly', this word has been repurposed in Irish slang to mean something positive rather than wild or violent. It gained popularity in the 1990s among young Irish people as a term of approval.",
+                english: "Excellent/great",
+                french: "Excellent/génial"
+            },
+            {
+                id: 21,
+                expression: "The craic",
+                meaning: "Fun, entertainment, or good times; also news or gossip.",
+                history: "From the Irish 'craic' (pronounced 'crack'), this word embodies Irish social culture. It can mean fun, entertainment, news, or atmosphere. The spelling 'craic' was actually back-formed from English 'crack' into Irish in the 1970s.",
+                english: "Fun/entertainment/news",
+                french: "Amusement/divertissement"
+            },
+            {
+                id: 22,
+                expression: "Thick",
+                meaning: "Stupid or not very bright.",
+                history: "This use of 'thick' to mean stupid has been common in Ireland since the 19th century. It's a gentler way of calling someone unintelligent and is often used more in frustration than true malice.",
+                english: "Stupid/not bright",
+                french: "Stupide/pas malin"
+            },
+            {
+                id: 23,
+                expression: "Up the walls",
+                meaning: "Extremely frustrated, stressed, or going crazy.",
+                history: "This expression compares extreme frustration to being so agitated you could climb the walls. It's been used in Ireland since the early 20th century to describe overwhelming stress or annoyance.",
+                english: "Extremely frustrated/stressed",
+                french: "Extrêmement frustré/stressé"
+            },
+            {
+                id: 24,
+                expression: "Wagon",
+                meaning: "An unpleasant or difficult woman.",
+                history: "This somewhat derogatory term compares a difficult woman to a heavy, unwieldy wagon. It's been used in Irish English since the early 20th century, though it's considered quite rude and is less acceptable in modern usage.",
+                english: "Unpleasant/difficult woman",
+                french: "Femme désagréable/difficile"
+            },
+            {
+                id: 25,
+                expression: "What's the story?",
+                meaning: "What's happening? How are things?",
+                history: "This casual greeting asks for the 'story' or news of someone's life. It became popular in the late 20th century as a more informal alternative to 'How are you?' and reflects Irish interest in narrative and storytelling.",
+                english: "What's happening?/How are things?",
+                french: "Quoi de neuf?/Comment ça va?"
+            },
+            {
+                id: 26,
+                expression: "Yoke",
+                meaning: "Any object or thing whose name you can't remember.",
+                history: "This versatile word can refer to any object, similar to 'thingamajig' or 'whatsit'. It's been used in Irish English since the mid-20th century and shows the Irish tendency to use creative substitutions for forgotten words.",
+                english: "Thing/object/contraption",
+                french: "Chose/truc/machin"
+            },
+            {
+                id: 27,
+                expression: "Zonked",
+                meaning: "Extremely tired or exhausted.",
+                history: "This expression describes complete exhaustion, possibly derived from the sound of something hitting with force. It entered Irish slang in the mid-20th century and is used to describe both physical and mental fatigue.",
+                english: "Extremely tired/exhausted",
+                french: "Extrêmement fatigué/épuisé"
+            },
+            {
+                id: 28,
+                expression: "Banjaxed",
+                meaning: "Broken, ruined, or completely messed up.",
+                history: "Possibly derived from the Irish word 'bean-síthe' (banshee) or from Dublin slang, this term describes something that's completely broken or ruined. It's been used since the early 20th century and is distinctly Irish.",
+                english: "Broken/ruined/messed up",
+                french: "Cassé/foutu/abîmé"
+            },
+            {
+                id: 29,
+                expression: "Bold",
+                meaning: "Naughty or misbehaving (especially of children).",
+                history: "In Irish English, 'bold' doesn't mean brave but rather naughty or disobedient. This usage comes from older English meanings and has been preserved in Irish English since the 18th century, particularly when describing children's behavior.",
+                english: "Naughty/misbehaving",
+                french: "Vilain/désobéissant"
+            },
+            {
+                id: 30,
+                expression: "Delira and excira",
+                meaning: "Delighted and excited.",
+                history: "This playful Dublin expression elongates 'delighted' and 'excited' for humorous effect. It became popular in the 1990s and shows the Irish love of wordplay and exaggeration for comedic purposes.",
+                english: "Delighted and excited",
+                french: "Ravi et excité"
+            },
+            {
+                id: 31,
+                expression: "Feck",
+                meaning: "A mild form of a stronger swear word; also means to steal.",
+                history: "This Irish euphemism serves as a milder alternative to a stronger expletive. It can also mean 'to steal' in some contexts. Made famous internationally by the TV show 'Father Ted', it's been part of Irish vernacular for decades.",
+                english: "Mild swear word/to steal",
+                french: "Juron léger/voler"
+            },
+            {
+                id: 32,
+                expression: "Gander",
+                meaning: "A look or glance.",
+                history: "From the idea of stretching one's neck like a goose (gander) to get a better look, this expression has been used in Ireland since the 19th century. It's often used when someone wants to examine something more closely.",
+                english: "Look/glance",
+                french: "Coup d'œil/regard"
+            },
+            {
+                id: 33,
+                expression: "Hames",
+                meaning: "A complete mess or disaster.",
+                history: "Originally referring to the curved pieces of a horse's harness, 'making a hames of it' means making a complete mess. This rural expression dates back to the 19th century when horse-drawn implements were common in Irish agriculture.",
+                english: "Complete mess/disaster",
+                french: "Désastre complet/gâchis"
+            },
+            {
+                id: 34,
+                expression: "Jar",
+                meaning: "A pint of beer or alcoholic drink.",
+                history: "This term compares a drink to being served in a jar. It's been Irish slang for an alcoholic drink since the early 20th century and reflects the cultural importance of pub culture in Irish society.",
+                english: "Pint of beer/alcoholic drink",
+                french: "Pinte de bière/boisson alcoolisée"
+            },
+            {
+                id: 35,
+                expression: "Knackered",
+                meaning: "Extremely tired or worn out.",
+                history: "Originally referring to old horses that were 'knackered' (sent to the knacker's yard), this term came to mean extremely tired. It's been used in Irish English since the early 20th century to describe complete exhaustion.",
+                english: "Extremely tired/worn out",
+                french: "Crevé/épuisé"
+            },
+            {
+                id: 36,
+                expression: "Lash",
+                meaning: "To try something or have a go at it.",
+                history: "This expression treats an attempt like 'lashing out' at something. It's been used in Ireland since the mid-20th century to encourage someone to try something, even if they might not succeed.",
+                english: "Try/have a go at",
+                french: "Essayer/tenter"
+            },
+            {
+                id: 37,
+                expression: "Muck savage",
+                meaning: "Someone from a very rural area; a country bumpkin.",
+                history: "This somewhat derogatory term combines 'muck' (dirt) with 'savage' to describe someone perceived as very rural or unsophisticated. It reflects urban-rural tensions and has been used since the early 20th century.",
+                english: "Country bumpkin/rural person",
+                french: "Plouc/rustre"
+            },
+            {
+                id: 38,
+                expression: "Notions",
+                meaning: "Ideas above one's station; putting on airs.",
+                history: "When someone has 'notions', they're acting above their perceived social class or status. This expression has been used in Ireland since the 19th century and reflects traditional Irish attitudes toward social pretension.",
+                english: "Ideas above one's station",
+                french: "Se donner des airs"
+            },
+            {
+                id: 39,
+                expression: "Oul' wan",
+                meaning: "An old woman.",
+                history: "A pronunciation of 'old one', this term can be used affectionately or dismissively depending on context. It's been part of Irish dialect since the 19th century and shows the Irish pronunciation pattern of 'old' as 'oul'.",
+                english: "Old woman",
+                french: "Vieille femme"
+            },
+            {
+                id: 40,
+                expression: "Shift",
+                meaning: "To kiss someone romantically.",
+                history: "In Irish slang, 'shift' means to kiss, particularly in a romantic context. This usage became popular among Irish teenagers in the late 20th century and is distinctly different from the standard English meaning of the word.",
+                english: "Kiss romantically",
+                french: "Embrasser amoureusement"
+            },
+            {
+                id: 41,
+                expression: "Sound",
+                meaning: "Good, reliable, or trustworthy person.",
+                history: "When someone is 'sound', they're considered a good person - reliable, trustworthy, and decent. This positive use of 'sound' has been part of Irish slang since the mid-20th century and is high praise in Irish culture.",
+                english: "Good/reliable person",
+                french: "Personne bien/fiable"
+            },
+            {
+                id: 42,
+                expression: "Take the piss",
+                meaning: "To mock or make fun of someone.",
+                history: "This expression means to mock or ridicule someone, often in a playful way. While used throughout Britain and Ireland, it's particularly common in Irish banter culture where gentle mockery is a form of social bonding.",
+                english: "Mock/make fun of",
+                french: "Se moquer de"
+            },
+            {
+                id: 43,
+                expression: "Cute hoor",
+                meaning: "A sly, cunning person who gets away with things.",
+                history: "Despite containing what sounds like an insult, this is often used with grudging admiration for someone who's clever or cunning. 'Hoor' is a pronunciation of 'whore' but in this context means a sly character rather than anything sexual.",
+                english: "Sly/cunning person",
+                french: "Personne rusée/maligne"
+            },
+            {
+                id: 44,
+                expression: "Messages",
+                meaning: "Groceries or shopping.",
+                history: "In Ireland, 'doing the messages' means going grocery shopping. This usage comes from the idea that you're carrying out errands or 'messages' for the household. It's been used since the early 20th century.",
+                english: "Groceries/shopping",
+                french: "Courses/provisions"
+            },
+            {
+                id: 45,
+                expression: "Minerals",
+                meaning: "Soft drinks or sodas.",
+                history: "Irish people call soft drinks 'minerals', referring to mineral water and extending to all carbonated beverages. This term has been used since the early 20th century when mineral water was a luxury item.",
+                english: "Soft drinks/sodas",
+                french: "Boissons gazeuses"
+            },
+            {
+                id: 46,
+                expression: "Press",
+                meaning: "A cupboard or wardrobe.",
+                history: "In Irish English, 'press' refers to any cupboard or storage space, from kitchen cabinets to wardrobes. This usage comes from old English 'press' meaning a cupboard and has been preserved in Irish English since the 18th century.",
+                english: "Cupboard/wardrobe",
+                french: "Placard/armoire"
+            },
+            {
+                id: 47,
+                expression: "Rubber",
+                meaning: "An eraser.",
+                history: "While Americans say 'eraser', Irish people use the British 'rubber'. This term has been standard in Irish English since erasers were first introduced and shows Ireland's historical connection to British educational systems.",
+                english: "Eraser",
+                french: "Gomme"
+            },
+            {
+                id: 48,
+                expression: "Sleeveen",
+                meaning: "A sly, untrustworthy person.",
+                history: "From the Irish 'slíbhín', this term describes someone who's sly and untrustworthy. It's been used since the 19th century and shows how Irish Gaelic words influenced Irish English, particularly for describing character types.",
+                english: "Sly/untrustworthy person",
+                french: "Personne sournoise/peu fiable"
+            },
+            {
+                id: 49,
+                expression: "Slapper",
+                meaning: "A promiscuous woman (considered derogatory).",
+                history: "This derogatory term for a promiscuous woman became common in Irish slang in the late 20th century. While widely understood, it's considered quite offensive and reflects outdated attitudes toward women's sexuality.",
+                english: "Promiscuous woman (derogatory)",
+                french: "Femme de mœurs légères (péjoratif)"
+            },
+            {
+                id: 50,
+                expression: "Your man/Your woman",
+                meaning: "That person (when you can't remember their name).",
+                history: "This useful phrase refers to someone whose name you can't remember or don't want to say. It's been part of Irish speech patterns since the 19th century and shows the Irish tendency to use indirect reference in conversation.",
+                english: "That person/whatsisname",
+                french: "Cette personne/machin"
+            }
+        ];
+        
+        // DOM elements
+        const searchInput = document.getElementById('searchInput');
+        const gridView = document.getElementById('gridView');
+        const listView = document.getElementById('listView');
+        const lexiconGrid = document.getElementById('lexiconGrid');
+        const lexiconList = document.getElementById('lexiconList');
+        const displayedCount = document.getElementById('displayedExpressions');
+        const expressionModal = document.getElementById('expressionModal');
+        const closeModal = document.getElementById('closeModal');
+        
+        // Modal elements
+        const modalNumber = document.getElementById('modalNumber');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalMeaning = document.getElementById('modalMeaning');
+        const modalHistory = document.getElementById('modalHistory');
+        const modalEnglish = document.getElementById('modalEnglish');
+        const modalFrench = document.getElementById('modalFrench');
+        
+        let currentView = 'grid';
+        let filteredExpressions = [...expressions];
+        
+        // Initialize the lexicon
+        function init() {
+            renderExpressions();
+            setupEventListeners();
+        }
+        
+        // Setup event listeners
+        function setupEventListeners() {
+            searchInput.addEventListener('input', handleSearch);
+            gridView.addEventListener('click', () => switchView('grid'));
+            listView.addEventListener('click', () => switchView('list'));
+            closeModal.addEventListener('click', closeExpressionModal);
+            
+            // Close modal when clicking outside
+            expressionModal.addEventListener('click', (e) => {
+                if (e.target === expressionModal) {
+                    closeExpressionModal();
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && expressionModal.style.display === 'flex') {
+                    closeExpressionModal();
+                }
+            });
+        }
+        
+        // Open expression modal
+        function openExpressionModal(expression) {
+            modalNumber.textContent = expression.id;
+            modalTitle.textContent = expression.expression;
+            modalMeaning.textContent = expression.meaning;
+            modalHistory.textContent = expression.history;
+            modalEnglish.textContent = expression.english;
+            modalFrench.textContent = expression.french;
+            
+            expressionModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // Close expression modal
+        function closeExpressionModal() {
+            expressionModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Handle search functionality
+        function handleSearch(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            filteredExpressions = expressions.filter(expr => 
+                expr.expression.toLowerCase().includes(searchTerm) ||
+                expr.meaning.toLowerCase().includes(searchTerm) ||
+                expr.english.toLowerCase().includes(searchTerm) ||
+                expr.french.toLowerCase().includes(searchTerm)
+            );
+            renderExpressions();
+            updateDisplayedCount();
+        }
+        
+        // Switch between grid and list views
+        function switchView(view) {
+            currentView = view;
+            
+            if (view === 'grid') {
+                gridView.classList.add('active');
+                listView.classList.remove('active');
+                lexiconGrid.style.display = 'grid';
+                lexiconList.style.display = 'none';
+            } else {
+                listView.classList.add('active');
+                gridView.classList.remove('active');
+                lexiconGrid.style.display = 'none';
+                lexiconList.style.display = 'block';
+            }
+            
+            renderExpressions();
+        }
+        
+        // Render expressions based on current view
+        function renderExpressions() {
+            if (currentView === 'grid') {
+                renderGridView();
+            } else {
+                renderListView();
+            }
+        }
+        
+        // Render grid view
+        function renderGridView() {
+            if (filteredExpressions.length === 0) {
+                lexiconGrid.innerHTML = '<div class="no-results">No expressions found matching your search.</div>';
+                return;
+            }
+            
+            lexiconGrid.innerHTML = filteredExpressions.map(expr => `
+                <div class="expression-card clickable" onclick="openExpressionModal(expressions.find(e => e.id === ${expr.id}))">
+                    <div class="expression-header">
+                        <div class="expression-number">${expr.id}</div>
+                        <div class="expression-title">${expr.expression}</div>
+                    </div>
+                    <div class="expression-meaning">${expr.meaning}</div>
+                    <div class="expression-history">${expr.history.length > 150 ? expr.history.substring(0, 150) + '...' : expr.history}</div>
+                    <div class="translations">
+                        <div class="translation english">
+                            <div class="translation-label">English</div>
+                            <div>${expr.english}</div>
+                        </div>
+                        <div class="translation french">
+                            <div class="translation-label">Français</div>
+                            <div>${expr.french}</div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // Render list view
+        function renderListView() {
+            if (filteredExpressions.length === 0) {
+                lexiconList.innerHTML = '<div class="no-results">No expressions found matching your search.</div>';
+                return;
+            }
+            
+            lexiconList.innerHTML = filteredExpressions.map(expr => `
+                <div class="list-item clickable" onclick="openExpressionModal(expressions.find(e => e.id === ${expr.id}))">
+                    <div class="list-number">${expr.id}</div>
+                    <div class="list-content">
+                        <div class="list-title">${expr.expression}</div>
+                        <div class="list-meaning">${expr.meaning}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        // Update displayed count
+        function updateDisplayedCount() {
+            displayedCount.textContent = filteredExpressions.length;
+        }
+        
+        // Initialize the application
+        init();
+    </script>
+</body>
+</html>
